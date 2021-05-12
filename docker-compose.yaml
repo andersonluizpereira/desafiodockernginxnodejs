@@ -7,7 +7,7 @@ services:
       context: node
     container_name: app
     restart: always
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 60s docker-entrypoint.sh
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     command: node index.js
     networks: 
       - node-network
@@ -27,8 +27,8 @@ services:
     tty: true
     ports: 
         - "3306:3306"
-   # volumes: 
-   #   - ./mysql:/var/lib/mysql
+    volumes: 
+      - ./mysql:/var/lib/mysql
     environment: 
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
