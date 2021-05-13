@@ -22,6 +22,11 @@ COLLATE=latin1_swedish_ci;`;
 connection.query(sql);
 connection.end();
 
+connection = mysql.createConnection(config);
+sql = `INSERT INTO nodedb.people (name) VALUES('${faker.internet.userName()}');`;
+connection.query(sql);
+connection.end();
+
 app.get("/", (req, res) => {
   connection = mysql.createConnection(config);
   sql = `INSERT INTO nodedb.people (name) VALUES('${faker.internet.userName()}');`;
