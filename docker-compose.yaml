@@ -12,8 +12,8 @@ services:
     command: node index.js
     networks: 
       - node-network
-    # volumes: 
-    #   - ./node:/usr/src/app
+    volumes: 
+      - ./node:/usr/src/app
     tty: true
     depends_on: 
        - db
@@ -26,8 +26,8 @@ services:
     tty: true
     ports: 
         - "3306:3306"
-    # volumes: 
-    #   - ./mysql:/var/lib/mysql
+    volumes: 
+      - ./mysql:/var/lib/mysql
     environment: 
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
